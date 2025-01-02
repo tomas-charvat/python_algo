@@ -65,7 +65,7 @@ if __name__ == '__main__':
     #print(gold_data.head())
     print(gold_data.info())
 
-    bt=Backtest(gold_data[0:20000],Gold_5min_Strategy,cash=10_000,commission=0.001)
+    bt=Backtest(gold_data[0:10000],Gold_5min_Strategy,cash=10_000,commission=0.001)
 
 
     def constraints(params: dict) -> bool:
