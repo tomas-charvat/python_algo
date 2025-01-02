@@ -63,7 +63,7 @@ if __name__ == '__main__':
     gold_data['Datetime']=pd.to_datetime(gold_data['Datetime'])
     gold_data.set_index('Datetime',inplace=True)
     #print(gold_data.head())
-    #print(gold_data.info())
+    print(gold_data.info())
 
     bt=Backtest(gold_data[0:20000],Gold_5min_Strategy,cash=10_000,commission=0.001)
 
