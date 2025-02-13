@@ -1,11 +1,12 @@
 
 from backtesting.lib import crossover
 from backtesting.test import SMA
-import yfinance as yf
 import pandas as pd
-import multiprocessing as mp
+
 from backtesting import Strategy, Backtest
-import numpy as np
+
+
+
 class Gold_5min_Strategy(Strategy):
     SMA1=20
     SMA2=50
@@ -57,7 +58,7 @@ if __name__ == '__main__':
 
     gold_data=pd.read_csv('gold_5m_data2.csv')
 
-    mp.set_start_method('fork')
+
     #gold_data.columns=['Close','High','Low','Open','Volume']
     gold_data.reset_index(drop=True, inplace=True)
     gold_data['Datetime']=pd.to_datetime(gold_data['Datetime'])
@@ -73,14 +74,14 @@ if __name__ == '__main__':
 
 
     stats=bt.optimize(
-        tp_price=np.arange(1,5,0.5).tolist(),
-        sl_price=np.arange(1,5,0.5).tolist(),
+        tp_price=range(1,5,1),
+        sl_price=range(1,5,1),
         SMA1=range(5,50,5),
         SMA2=range(20,100,10),
         SMA3=range(50,300,20),
         maximize= 'Sharpe Ratio',
         constraint= constraints,
-         max_tries=10000
+         max_tries=1000
     )
 
     print(stats)
